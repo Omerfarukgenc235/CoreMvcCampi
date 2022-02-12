@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "YazarDuzenle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Yazar Düzenleme</h1>
+
+@using (Html.BeginForm("YazarDuzenle", "Yazarlar", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.WriterID)
+    @Html.HiddenFor(x => x.WriterPassword)
+    @Html.HiddenFor(x => x.WriterMail)
+    @Html.Label("Yazar Ad Soyad")
+    @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Görseli")
+    @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Görseli")
+    @Html.TextAreaFor(x => x.WriterAbout, 10, 3, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+    <br />
+}
+

@@ -10,5 +10,9 @@ namespace BusinessLayer.Abstract
     public interface IContactService
     {
         void ContactAdd(Contact contact);
+        void Update(Contact contact);
+
+        List<Contact> GetList();
+
     }
 }

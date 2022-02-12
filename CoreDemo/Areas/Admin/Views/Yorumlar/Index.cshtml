@@ -1,0 +1,35 @@
+﻿@using EntityLayer.Concrete
+@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı Adı</th>
+        <th>Yorum</th>
+        <th>Blog</th>
+        <th>Tarih</th>
+        <th>Yayın Durumu</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.CommentID</td>
+            <td>@x.CommentUserName</td>
+            <td>@x.CommentContent</td>
+            <td>@x.Blog.BlogTitle</td>
+            <td>@(((DateTime)x.CommentDate).ToString("dd-MMM-yyyy"))</td>
+            @if (x.CommentStatus)
+            {
+                <td><a href="/Admin/Yorumlar/YayinDurumu/@x.CommentID" class="btn btn-danger">Pasif Yap</a></td>
+            }
+            else
+            {
+                <td><a href="/Admin/Yorumlar/YayinDurumu/@x.CommentID" class="btn btn-info">Aktif Yap</a></td>
+            }
+        </tr>
+    }
+</table>

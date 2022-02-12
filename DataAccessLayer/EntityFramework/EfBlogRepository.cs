@@ -20,6 +20,15 @@ namespace DataAccessLayer.EntityFramework
                 return c.Blogs.Include(x => x.Category).ToList();
             }
         }
+
+        public List<Blog> GetListWithCategoryandWriter()
+        {
+            using (var c = new Context())
+            {
+                return c.Blogs.Include(x => x.Category).Include(y => y.Writer).ToList();
+            }
+        }
+
         public List<Blog> GetListWithCategoryByWriter(int id)
         {
             using (var c = new Context())
@@ -27,5 +36,6 @@ namespace DataAccessLayer.EntityFramework
                 return c.Blogs.Include(x => x.Category).Where(x=>x.WriterID == id).ToList();
             }
         }
+
     }
 }

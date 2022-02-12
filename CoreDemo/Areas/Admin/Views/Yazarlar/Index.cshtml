@@ -1,0 +1,48 @@
+﻿@using EntityLayer.Concrete
+@model List<Writer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="wrapper">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                @foreach (var x in Model)
+                {
+                    <div class="col-lg-3">
+                        <div class="contact-box center-version">
+                            <a href="/Admin/Yazarlar/YazarDuzenle/@x.WriterID">
+                                <img alt="image" class="rounded-circle" src="@x.WriterImage">
+                                <h3 class="m-b-xs"><strong>@x.WriterName</strong></h3>
+                                <div class="font-bold">@x.WriterAbout</div>
+                                <address class="m-t-md">
+                                    <strong>@x.WriterMail</strong><br>
+                                </address>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="/Admin/Yazarlar/YazarDuzenle/@x.WriterID" class="btn btn-xs btn-success"><i class="fa fa-edit"></i> Düzenle </a>
+                                    <a href="" class="btn btn-xs btn-block"><i class="fa fa-envelope"></i> E-mail</a>
+                                    @if (x.WriterStatus)
+                                    {
+                                        <a href="/Admin/Yazarlar/YazarYayin/@x.WriterID" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Pasif Yap</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Admin/Yazarlar/YazarYayin/@x.WriterID" class="btn btn-xs btn-primary"><i class="fa fa-check"></i> Aktif Yap</a>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

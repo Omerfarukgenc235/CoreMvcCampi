@@ -47,5 +47,40 @@ namespace CoreDemo.Areas.Admin.Controllers
             }
             return View();
         }
+        public IActionResult CategoryDelete(int id)
+        {
+            var value = cm.TGetByID(id);
+            cm.TDelete(value);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult KategoriDuzenleme(int id)
+        {
+            var deger = cm.TGetByID(id);
+            return View(deger);
+        }
+        [HttpPost]   
+        public IActionResult KategoriDuzenleme(Category p)
+        {
+            CategoryValidator wv = new CategoryValidator();
+            ValidationResult results = wv.Validate(p);
+
+            if (results.IsValid)
+            {
+
+                p.CategoryStatus = true;
+                cm.TUpdate(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var x in results.Errors)
+                {
+                    ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
+                }
+            }
+            return View();
+
+        }
     }
 }

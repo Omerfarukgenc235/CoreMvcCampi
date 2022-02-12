@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
      
         public List<Writer> GetList()
         {
-            throw new NotImplementedException();
+            return _writerdal.GetListAll();
         }
 
         public List<Writer> GetWriterByID(int id)
@@ -47,6 +47,19 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Writer t)
         {
             _writerdal.Update(t);
+        }
+
+        public void YazarYayinDurumu(Writer writer)
+        {
+            if(writer.WriterStatus == true)
+            {
+                writer.WriterStatus = false;
+            }
+            else
+            {
+                writer.WriterStatus = true;
+            }
+            _writerdal.Update(writer);
         }
     }
 }

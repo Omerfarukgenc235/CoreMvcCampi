@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.Blog
+
+@{
+    ViewData["Title"] = "BlogDuzenleme";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>BlogDuzenleme</h1>
+@using (Html.BeginForm("BlogDuzenleme", "Bloglar", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.BlogID)
+    @Html.HiddenFor(x => x.BlogCreateDate)
+    @Html.HiddenFor(x => x.WriterID)
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogTitle)
+    <br />
+    @Html.Label("Blog Görseli")
+    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogImage)
+    <br />
+    @Html.Label("Blog Küçük Görsel")
+    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogThumbnailImage)
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blog İçeriği")
+    @Html.TextAreaFor(x => x.BlogContent, 15, 3, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogContent)
+    <br />
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+    <br />
+}
+

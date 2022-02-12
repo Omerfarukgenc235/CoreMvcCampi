@@ -23,6 +23,10 @@ namespace BusinessLayer.Concrete
         {
             return _blogdal.GetListWithCategory();
         }
+        public List<Blog> GetBlogListWithCategoryandWriter()
+        {
+            return _blogdal.GetListWithCategoryandWriter();
+        }
         public List<Blog> GetBlogListWithCategoryLast3Blog()
         {
             return _blogdal.GetListWithCategory().TakeLast(4).ToList(); 
@@ -69,6 +73,20 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Blog t)
         {
             _blogdal.Update(t);
+        }
+
+        public void TUpdateDurum(Blog blog)
+        {
+            if(blog.BlogStatus == false)
+            {
+                blog.BlogStatus = true;
+                _blogdal.Update(blog);
+            }
+            else
+            {
+                blog.BlogStatus = false;
+                _blogdal.Update(blog);
+            }
         }
     }
 }

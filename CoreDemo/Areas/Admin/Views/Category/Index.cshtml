@@ -11,8 +11,7 @@
     <tr>
         <th>#</th>
         <th>Kategori Adı</th>
-        <th>Pasif Yap</th>
-        <th>Aktif Yap</th>
+        <th>Yayın Durumu</th>
         <th>Düzenle</th>
     </tr>
     @foreach (var x in Model)
@@ -20,9 +19,8 @@
         <tr>
             <td>@x.CategoryID</td>
             <td>@x.CategoryName</td>
-            <td><a href="#" class="btn btn-danger">Pasif Yap</a></td>
-            <td><a href="#" class="btn btn-info">Aktif Yap</a></td>
-            <td><a href="#" class="btn btn-success">Düzenle</a></td>
+            <td><a href="/Admin/Category/CategoryDelete/@x.CategoryID/" id="DeleteBtn" onclick="return confirm('Silmek istediğinizden emin misiniz ?');" class="btn btn-danger">Yayından Kaldır</a></td>
+            <td><a href="/Admin/Category/KategoriDuzenleme/@x.CategoryID" class="btn btn-success">Düzenle</a></td>
         </tr>
     }
 </table>

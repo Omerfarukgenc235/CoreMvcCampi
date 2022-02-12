@@ -23,11 +23,32 @@ namespace BusinessLayer.Concrete
             _commentdal.Insert(comment);
         }
 
+        public List<Comment> ButunYorumlar()
+        {
+            return _commentdal.GetListWithBlog();
+        }
+
         public List<Comment> GetList(int id)
         {
           return  _commentdal.GetListAll(x => x.BlogID == id);
         }
 
-      
+        public Comment TGetByID(int id)
+        {
+            return _commentdal.GetByID(id);
+        }
+
+        public void TUpdate(Comment comment)
+        {
+            if(comment.CommentStatus == true)
+            {
+                comment.CommentStatus = false;
+            }
+            else
+            {
+                comment.CommentStatus = true;
+            }
+            _commentdal.Update(comment);
+        }
     }
 }

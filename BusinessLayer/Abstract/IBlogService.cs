@@ -12,6 +12,8 @@ namespace BusinessLayer.Abstract
       
         List<Blog> GetBlogListWithCategory();
         List<Blog> GetBlogListWithWriter(int id);
+        void TUpdateDurum(Blog blog);
+
 
     }
 }

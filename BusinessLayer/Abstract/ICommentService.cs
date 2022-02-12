@@ -11,5 +11,8 @@ namespace BusinessLayer.Abstract
     {
         void AddComment(Comment comment);
         List<Comment> GetList(int id);
+        List<Comment> ButunYorumlar();
+        void TUpdate(Comment comment);
+        Comment TGetByID(int id);
     }
 }

@@ -22,6 +22,16 @@ namespace BusinessLayer.Concrete
         {
             _contactdal.Insert(contact);
         }
+
+        public List<Contact> GetList()
+        {
+            return _contactdal.GetListAll();
+        }
+
+        public void Update(Contact contact)
+        {
+            _contactdal.Update(contact);
+        }
     }
 
 }
