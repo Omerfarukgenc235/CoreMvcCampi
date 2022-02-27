@@ -53,7 +53,6 @@ namespace CoreDemo.Areas.Admin.Controllers
             cm.TDelete(value);
             return RedirectToAction("Index");
         }
-<<<<<<< HEAD
         [HttpGet]
         public IActionResult KategoriDuzenleme(int id)
         {
@@ -83,7 +82,6 @@ namespace CoreDemo.Areas.Admin.Controllers
             return View();
 
         }
-=======
->>>>>>> b96dd92a91da3689dfdeb339e7f2cfc96e0cd792
+
     }
 }
