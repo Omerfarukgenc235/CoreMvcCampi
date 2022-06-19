@@ -13,6 +13,8 @@
         <th>Kategori Adı</th>
         <th>Yayın Durumu</th>
         <th>Düzenle</th>
+        <th>Pasif Yap</th>
+        <th>Aktif Yap</th>
     </tr>
     @foreach (var x in Model)
     {
@@ -23,7 +25,6 @@
             <td><a href="/Admin/Category/KategoriDuzenleme/@x.CategoryID" class="btn btn-success">Düzenle</a></td>
             <td><a href="/Admin/Category/CategoryDelete/@x.CategoryID/" id="DeleteBtn" onclick="return confirm('Silmek istediğinizden emin misiniz ?');" class="btn btn-danger">Pasif Yap</a></td>
             <td><a href="#" class="btn btn-info">Aktif Yap</a></td>
-            <td><a href="#" class="btn btn-success">Düzenle</a></td>
         </tr>
     }
 </table>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Notification>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Bildirimler</h1>
+
+<div class="ibox-content ">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal1"><i class="fa fa-plus"></i> Yeni Bildirim Yayınla</button>
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Yeni Bildirim Yayınlama Ekranı</h2>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post">
+                        <label>Başlık</label>
+                        <br />
+                        <input type="text" required name="NotificationType" class="form-control" />
+                        <br />
+                        <label>İçerik</label>
+                        <br />
+                        <textarea class="form-control" required name="NotificationDetails" rows="6" cols="20"></textarea>
+                        <br />
+                        <label>Icon</label>
+                        <br />
+                        <input type="text" required name="NotificationTypeSymbol" class="form-control" />
+                        <br />
+                        <label>Renk</label>
+                        <br />
+                        <input type="text" required name="NotificationTypeColor" class="form-control" />
+                        <br />
+                        <button type="submit" required class="btn btn-danger" style="float: right;">Ekle</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @foreach (var x in Model)
+    {
+        <br />
+        <div class="timeline-item">
+            <div class="row">
+                <div class="col-3 date">
+                    <i class="fa fa-bell" style="color:black"></i>
+                    @(((DateTime)@x.NotificationDate).ToString("dd-MMM-yyyy"))
+                    <br />
+                </div>
+                <div class="col-7 content">
+                    <p class="m-b-xs"><strong>@x.NotificationType</strong></p>
+                    <p>@x.NotificationDetails</p>
+                </div>
+            </div>
+            <a href="/Admin/Bildirimler/Sil/@x.NotificationID" class="btn btn-danger" style="float: right;"><i class="fa fa-trash"></i> Sil</a>
+            &nbsp;
+            <a href="/Admin/Bildirimler/Guncelle/@x.NotificationID" class="btn btn-primary" style="float: right;"><i class="fa fa-edit"></i> Düzenle</a>
+        </div>
+    }
+</div>

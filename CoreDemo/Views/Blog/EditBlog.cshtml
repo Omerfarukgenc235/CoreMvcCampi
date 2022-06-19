@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>EditBlog</h1>
 
 
-<h1>Blog Düzenleme Oluşturma</h1>
+<h1>Blog Düzenleme Sayfası</h1>
+<br />
 @using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post))
 {
     @Html.HiddenFor(x=>x.BlogID)

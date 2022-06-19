@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<form method="post" role="form">
+
+    <div class="ibox-content">
+        <div class="row">
+
+            <div class="col-sm-6 b-r">
+                <h3 class="m-t-none m-b">Hakkımızda Güncelleme Sayfası</h3>
+                <br />
+                <div>
+                    <h5>Açıklama</h5>
+
+                    <textarea cols="5" rows="10" asp-for="@Model.AboutDetails1" class="form-control"></textarea>
+                </div>
+                <br />
+
+            </div>
+            <div class="col-sm-6">
+                <h4>Görsel</h4>
+                <p class="text-center">
+                    <img src="@Model.AboutImage1" style="max-width: 100%" />
+                </p>
+                <label>Görsel Linki</label>
+                <input type="text" class="form-control" value="@Model.AboutImage1" name="AboutImage1" />
+            </div>
+        </div>
+        <br />
+        <button class="btn btn-primary float-right m-t-n-xs" type="submit"><strong>Güncelle</strong></button>
+
+    </div>
+</form>

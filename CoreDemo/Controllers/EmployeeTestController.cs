@@ -35,8 +35,7 @@ namespace CoreDemo.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(p);
-         
+            return View(p);         
         }
         [HttpGet]
         public async Task<IActionResult> EditEmployee(int id)

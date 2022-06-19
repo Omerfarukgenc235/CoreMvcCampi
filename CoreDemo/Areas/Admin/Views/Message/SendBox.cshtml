@@ -1,0 +1,125 @@
+﻿@using EntityLayer.Concrete
+@model List<Message2>
+@{
+    ViewData["Title"] = "SendBox";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSPINIA | Mailbox</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox ">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <a class="btn btn-block btn-primary compose-mail" href="/Admin/Message/ComposeMessage/">Yeni Mesaj Gönder</a>
+                            <div class="space-25"></div>
+                            <h5>Mesajlar</h5>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li><a href="/Admin/Message/InBox"> <i class="fa fa-inbox "></i> Gelen Kutusu <span class="label label-warning float-right">16</span> </a></li>
+                                <li><a href="/Admin/Message/SendBox"> <i class="fa fa-envelope-o"></i> Giden Kutusu</a></li>
+                                <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Çöp Kutusu</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 animated fadeInRight">
+                <div class="mail-box-header">
+
+                    <form method="get" action="index.html" class="float-right mail-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" name="search" placeholder="Mail ara...">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    Ara
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <h2>
+                        Giden Kutusu
+                    </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="btn-group float-right">
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                        </div>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Yenile"><i class="fa fa-refresh"></i> Yenile</button>
+
+                    </div>
+                </div>
+                <div class="mail-box">
+
+                    <table class="table table-hover table-mail">
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr class="unread">
+                                    <td class="mail-subject"><a href="mail_detail.html">@x.ReceiverUser.WriterName</a></td>
+
+                                    <td class="mail-ontact"><a href="mail_detail.html">@x.Subject</a></td>
+                                    <td class=""></td>
+
+                                    <td class="text-right mail-date">@(((DateTime)x.MessageDate).ToString("dd-MMM-yyyy"))</td>
+                                </tr>
+                            }
+                            <tr class="read">
+
+                                <td class="mail-ontact"><a href="mail_detail.html">Patrick Pertners</a></td>
+                                <td class="mail-subject"><a href="mail_detail.html">If you are going to use a passage of Lorem </a></td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">May 28</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });</script>
+</body>
+
+</html>
+

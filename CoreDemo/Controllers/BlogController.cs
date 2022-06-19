@@ -14,15 +14,18 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
+        [AllowAnonymous]
+
         public IActionResult Index()
         {
             var bloglar = bm.GetBlogListWithCategory();
             return View(bloglar);
         }
+        [AllowAnonymous]
+
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
@@ -32,8 +35,11 @@ namespace CoreDemo.Controllers
         public IActionResult BlogListByWriter()
         {
             Context c = new Context();
-            var usermail = User.Identity.Name;
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+
+           // var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
 
             var values = bm.GetListWithCategoryByWriter(writerID);
             return View(values);
@@ -71,7 +77,8 @@ namespace CoreDemo.Controllers
                 p.BlogStatus = true;
                 p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 Context c = new Context();
-                var usermail = User.Identity.Name;
+                var username = User.Identity.Name;
+                var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
                 var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
 
                 p.WriterID = writerID;
@@ -113,7 +120,8 @@ namespace CoreDemo.Controllers
         {
             p.BlogStatus = true;
             Context c = new Context();
-            var usermail = User.Identity.Name;
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
 
             p.WriterID = writerID;

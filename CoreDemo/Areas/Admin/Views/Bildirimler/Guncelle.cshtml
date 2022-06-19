@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.Notification
+@{
+    ViewData["Title"] = "Guncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Bildirim Güncelleme Sayfası</h1>
+<br />
+<form method="post">
+
+    <label>Başlık</label>
+    <input type="text" class="form-control" value="@Model.NotificationType" name="NotificationType" />
+    <br />
+    <label>İçerik</label>
+    <textarea cols="20" rows="6" class="form-control"  name="NotificationDetails">@Model.NotificationDetails</textarea>
+    <br />
+    <label>Icon</label>
+    <input type="text" class="form-control" value="@Model.NotificationTypeSymbol" name="NotificationTypeSymbol" />
+    <br />
+    <label>Renk</label>
+    <input type="text" class="form-control" value="@Model.NotificationTypeColor" name="NotificationTypeColor" />
+    <br />
+    <label>Tarih</label>
+    <input type="text" class="form-control" value="@Model.NotificationDate" name="NotificationDate" />
+    <br />
+    <label>Durum</label>
+    <input type="text" class="form-control" value="@Model.NotificationStatus"  name="NotificationStatus" />
+    <br />
+    <button type="submit" class="btn btn-primary"  style="float: right;">Güncelle</button>
+</form>

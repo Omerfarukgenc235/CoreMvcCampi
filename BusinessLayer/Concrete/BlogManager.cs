@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
      
         public List<Blog> GetBlogListWithCategory()
         {
-            return _blogdal.GetListWithCategory();
+            return _blogdal.GetListWithCategory().OrderByDescending(x=>x.BlogID).ToList();
         }
         public List<Blog> GetBlogListWithCategoryandWriter()
         {

@@ -29,16 +29,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("AboutDetails1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AboutDetails2")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("AboutImage1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AboutImage2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AboutMapLocation")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("AboutStatus")

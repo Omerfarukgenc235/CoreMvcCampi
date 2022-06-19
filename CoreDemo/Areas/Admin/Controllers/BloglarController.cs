@@ -20,6 +20,10 @@ namespace CoreDemo.Areas.Admin.Controllers
             var degerler = bm.GetBlogListWithCategoryandWriter();
             return View(degerler);
         }
+        public IActionResult BlogListesi()
+        {
+            return View();
+        }
         public IActionResult BlogYayin(int id)
         {
             var blogdurum = bm.TGetByID(id);
